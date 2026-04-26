@@ -83,7 +83,16 @@ const Careers = () => {
         {/* About Working With Us */}
         <section className="py-14 md:py-20">
           <div className="container mx-auto px-4">
-            <div className="max-w-5xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+            <div className="max-w-6xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
+              <AnimatedContainer animation="fade-up" delay={100}>
+                <span className="inline-block text-primary font-semibold text-xs uppercase tracking-[0.2em] mb-3">{t("careers.about")}</span>
+                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-5">{t("careers.about")}</h2>
+                <div className="text-muted-foreground leading-relaxed space-y-4 text-sm md:text-base">
+                  <p>{t("careers.aboutText1")}</p>
+                  <p>{t("careers.aboutText2")}</p>
+                  <p>{t("careers.aboutText3")}</p>
+                </div>
+              </AnimatedContainer>
               <AnimatedContainer animation="fade-up">
                 <div className="relative rounded-2xl overflow-hidden shadow-xl">
                   <Image src="/products3.jpg" alt="Patel Precision workplace and manufacturing facility" fill className="w-full h-64 md:h-80 object-cover" />
@@ -104,31 +113,49 @@ const Careers = () => {
                   </div>
                 </div>
               </AnimatedContainer>
-              <AnimatedContainer animation="fade-up" delay={100}>
-                <span className="inline-block text-primary font-semibold text-xs uppercase tracking-[0.2em] mb-3">{t("careers.about")}</span>
-                <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-5">{t("careers.about")}</h2>
-                <div className="text-muted-foreground leading-relaxed space-y-4 text-sm md:text-base">
-                  <p>{t("careers.aboutText1")}</p>
-                  <p>{t("careers.aboutText2")}</p>
-                  <p>{t("careers.aboutText3")}</p>
-                </div>
-              </AnimatedContainer>
             </div>
           </div>
         </section>
 
         {/* What We Look For */}
-        <section className="py-14 md:py-16 bg-muted/20">
+        <section className="py-14 md:py-20 bg-muted/20">
           <div className="container mx-auto px-4">
-            <AnimatedContainer animation="fade-up" className="max-w-3xl mx-auto">
-              <h2 className="text-2xl md:text-3xl font-bold text-foreground mb-6 text-center">{t("careers.whatWeLook")}</h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {[t("careers.lookItem1"), t("careers.lookItem2"), t("careers.lookItem3"), t("careers.lookItem4")].map((item, i) => (
-                  <div key={i} className="flex items-start gap-3 bg-card rounded-xl p-4 border border-border/50 hover:border-primary/20 transition-all duration-300">
-                    <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
-                    <span className="text-sm text-muted-foreground">{item}</span>
-                  </div>
-                ))}
+            <AnimatedContainer animation="fade-up" className="max-w-5xl mx-auto">
+              <h2 className="text-3xl md:text-4xl font-bold text-foreground mb-3 text-center">{t("careers.whatWeLook")}</h2>
+              <p className="text-center text-muted-foreground mb-10 max-w-3xl mx-auto text-base">We are actively looking for talented individuals to join our team. Whether we have a current vacancy or not, we welcome applications as we hire based on our requirements and your qualifications.</p>
+              
+              <div className="mb-10">
+                <h3 className="text-xl md:text-2xl font-bold text-foreground mb-6 text-center">We're Recruiting For</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-5">
+                  {[
+                    "CNC Machine Operators",
+                    "CNC Machine Setters",
+                    "VMC (Vertical Machining Center) Operators",
+                    "VMC (Vertical Machining Center) Setters"
+                  ].map((position, i) => (
+                    <div key={i} className="flex items-start gap-4 bg-card rounded-xl p-5 border border-primary/30 hover:border-primary/50 hover:shadow-md transition-all duration-300">
+                      <CheckCircle className="w-6 h-6 text-primary mt-1 flex-shrink-0" />
+                      <span className="text-base md:text-lg font-semibold text-foreground">{position}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="mb-8">
+                <h3 className="text-lg md:text-xl font-bold text-foreground mb-6 text-center">What We Look For in You</h3>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {[t("careers.lookItem1"), t("careers.lookItem2"), t("careers.lookItem3"), t("careers.lookItem4")].map((item, i) => (
+                    <div key={i} className="flex items-start gap-3 bg-background rounded-xl p-4 border border-border/50 hover:border-primary/20 transition-all duration-300">
+                      <CheckCircle className="w-5 h-5 text-primary mt-0.5 flex-shrink-0" />
+                      <span className="text-sm text-muted-foreground">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              <div className="bg-primary/10 border border-primary/20 rounded-xl p-6">
+                <h3 className="text-base font-bold text-foreground mb-3">Open Application Policy</h3>
+                <p className="text-sm text-muted-foreground leading-relaxed">Don't see a matching position? No problem! Submit your application anyway. We continuously evaluate talented candidates and will reach out when there's a suitable opportunity that matches your skills and experience.</p>
               </div>
             </AnimatedContainer>
           </div>
@@ -148,7 +175,7 @@ const Careers = () => {
                     <GraduationCap className="w-7 h-7 text-primary" />
                   </div>
                   <h2 className="text-xl md:text-2xl font-bold text-foreground mb-2">{t("careers.applyTitle")}</h2>
-                  <p className="text-muted-foreground text-sm">{t("careers.applyDesc")}</p>
+                  <p className="text-muted-foreground text-sm">Submit your application for CNC Operators, CNC Setters, VMC Operators, or VMC Setters positions. We review applications continuously and consider candidates for future opportunities.</p>
                 </div>
                 <form onSubmit={handleSubmit} className="space-y-5">
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">

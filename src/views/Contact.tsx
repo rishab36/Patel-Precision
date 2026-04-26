@@ -24,7 +24,7 @@ const Contact = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const contactCards = [
-    { icon: MapPin, title: t("contact.address"), content: "A16/5, Harihar Corporation,\nDapode, Bhiwandi-421302\nMaharashtra, India" },
+    { icon: MapPin, title: t("contact.address"), content: "Patel Precision Pvt Ltd\nA16/5, Dapode\nBhiwandi-421302, Maharashtra, India" },
     { icon: Phone, title: t("common.phone"), content: "+91 98208 08852", href: "tel:+919820808852" },
     { icon: Mail, title: t("common.email"), content: "rakesh@patelprecision.com", href: "mailto:rakesh@patelprecision.com" },
     { icon: Clock, title: t("contact.hours"), content: "Mon - Sat: 9AM - 6PM\nSunday: Closed" },
@@ -206,13 +206,13 @@ const Contact = () => {
                 </div>
                 <div className="rounded-2xl overflow-hidden border border-border/50 shadow-sm h-[300px] md:h-[400px]">
                   <iframe
-                    src="https://www.google.com/maps?q=Harihar+Corporation+Dapode+Bhiwandi+Maharashtra+India&output=embed"
+                    src="https://www.google.com/maps?q=Patel+Precision+Pvt+Ltd+Dapode+Bhiwandi+Maharashtra+India&output=embed"
                     width="100%" height="100%" style={{ border: 0 }} allowFullScreen loading="lazy"
                     referrerPolicy="no-referrer-when-downgrade" title="Patel Precision Location"
                   />
                 </div>
                 <div className="text-center mt-3">
-                  <a href="https://www.google.com/maps/search/Harihar+Corporation+Dapode+Bhiwandi+Maharashtra" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium">
+                  <a href="https://www.google.com/maps/search/Patel+Precision+Pvt+Ltd+Dapode+Bhiwandi+Maharashtra" target="_blank" rel="noopener noreferrer" className="inline-flex items-center gap-2 text-primary hover:underline text-sm font-medium">
                     <ExternalLink className="w-3.5 h-3.5" />
                     {t("footer.viewOnMaps")}
                   </a>
