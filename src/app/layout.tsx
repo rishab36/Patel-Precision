@@ -32,10 +32,10 @@ export const metadata: Metadata = {
     siteName: "Patel Precision",
     images: [
       {
-        url: "https://patelprecision.com/og-image.jpg",
+        url: "https://patelprecision.com/patel-precision-logo-new.png",
         width: 1200,
         height: 630,
-        alt: "Patel Precision - Precision Manufacturing Excellence",
+        alt: "Patel Precision Logo - CNC Machining & Precision Manufacturing",
       },
     ],
   },
