@@ -4,7 +4,8 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build && node scripts/optimize-seo-simple.js",
+    "build": "next build",
+    "build:seo": "next build && node scripts/optimize-seo-simple.js",
     "start": "next start",
     "lint": "next lint"
   },
