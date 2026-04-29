@@ -57,19 +57,37 @@ function optimizeSeoSimple() {
       // Insert multiple meta tags after existing meta tags
       html = html.replace('</head>', `${metaTags}\n</head>`);
       
-      // Add extreme keyword stuffing to EVERY element like the example
+      // Add keyword stuffing to specific HTML elements only
       html = html
-        .replace(/<([^>]+)>/g, (match, tagContent) => {
-          // Skip closing tags and special tags
-          if (tagContent.startsWith('/') || tagContent.startsWith('!') || tagContent.includes('alt=') || tagContent.includes('title=')) {
-            return match;
-          }
-          
-          // Add alt and title to ALL elements
-          return `<${tagContent} alt="${mainKeyword}" title="${mainKeyword}">`;
+        // Add to div elements
+        .replace(/<div([^>]*)>/g, (match, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<div${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
         })
-        .replace(/class="([^"]*)"/g, (match, className) => {
-          return `class="${className}" alt="${mainKeyword}" title="${mainKeyword}"`;
+        // Add to section elements
+        .replace(/<section([^>]*)>/g, (match, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<section${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
+        })
+        // Add to main elements
+        .replace(/<main([^>]*)>/g, (match, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<main${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
+        })
+        // Add to h1, h2, h3 elements
+        .replace(/<h([1-6])([^>]*)>/g, (match, level, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<h${level}${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
+        })
+        // Add to p elements
+        .replace(/<p([^>]*)>/g, (match, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<p${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
+        })
+        // Add to body element
+        .replace(/<body([^>]*)>/g, (match, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<body${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
         });
       
       // Format the HTML (basic pretty-print)
