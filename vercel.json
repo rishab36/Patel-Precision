@@ -1,8 +1,9 @@
 {
-  "buildCommand": "next build",
+  "buildCommand": "npm run build:seo",
+  "outputDirectory": "out",
   "devCommand": "next dev",
   "installCommand": "npm install",
-  "framework": "nextjs",
+  "framework": null,
   "public": true,
   "headers": [
     {
