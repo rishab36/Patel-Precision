@@ -25,7 +25,7 @@ const SprayNozzles = () => {
           <Image src="/product-spray-nozzles.png" alt="Precision spray nozzles for industrial applications" fill className="object-cover" />
           <div className="absolute inset-0 bg-foreground/60 flex items-center justify-center">
             <div className="text-center">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-background mb-4">Spray Nozzles</h1>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-background mb-4">Precision Industrial Spray Nozzles</h1>
               <p className="text-background/90 text-lg max-w-2xl mx-auto px-4">Precision engineered spray nozzles for industrial applications</p>
             </div>
           </div>

@@ -25,7 +25,7 @@ const Fasteners = () => {
           <Image src="/product-fasteners.png" alt="Precision fasteners and bolts manufacturing" fill className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-foreground/60 flex items-center justify-center">
             <div className="text-center">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-background mb-4">Fasteners</h1>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-background mb-4">Precision Fasteners Manufacturing</h1>
               <p className="text-background/90 text-lg max-w-2xl mx-auto px-4">High-precision fasteners for critical applications</p>
             </div>
           </div>

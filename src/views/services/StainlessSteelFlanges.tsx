@@ -25,7 +25,7 @@ const StainlessSteelFlanges = () => {
           <Image src="/product-ss-flanges.png" alt="Stainless Steel Flanges" fill className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-foreground/60 flex items-center justify-center">
             <div className="text-center">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-background mb-4">Stainless Steel Flanges</h1>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-background mb-4">High-Quality Stainless Steel Flanges</h1>
               <p className="text-background/90 text-lg max-w-2xl mx-auto px-4">High-quality SS flanges for pipeline systems</p>
             </div>
           </div>

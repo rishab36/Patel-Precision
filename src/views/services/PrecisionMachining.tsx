@@ -25,7 +25,7 @@ const PrecisionMachining = () => {
           <Image src="/product-precision-machining.png" alt="Precision machining services and solutions" fill className="w-full h-full object-cover" />
           <div className="absolute inset-0 bg-foreground/60 flex items-center justify-center">
             <div className="text-center">
-              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-background mb-4">Precision Machining</h1>
+              <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-background mb-4">Advanced Precision Machining Solutions</h1>
               <p className="text-background/90 text-lg max-w-2xl mx-auto px-4">High-accuracy machining for critical applications</p>
             </div>
           </div>
