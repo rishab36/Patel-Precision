@@ -5,11 +5,11 @@ import Providers from "./providers";
 export const metadata: Metadata = {
   metadataBase: new URL("https://patelprecision.com"),
   title: {
-    default: "Patel Precision - ISO 9001:2015 Certified CNC Machining & Precision Components Manufacturer",
+    default: "Patel Precision - CNC Machining & Precision Components",
     template: "%s | Patel Precision",
   },
   description:
-    "ISO 9001:2015 certified precision machining manufacturer. CNC turned parts, air compressor components, fasteners, pipe fittings, cable glands, industrial components. 25+ years expertise in Bhiwandi, India. Serving global clientele.",
+    "ISO 9001:2015 certified precision machining manufacturer. CNC turned parts, air compressor components, fasteners, pipe fittings. 25+ years expertise in Bhiwandi, India.",
   keywords: "precision machined components, CNC machining services, CNC turned parts, air compressor parts, automotive components, 5 axis machining, precision manufacturing, industrial components, cable glands, fasteners, pipe fittings",
   icons: { icon: "/favicon.ico" },
   robots: {
@@ -48,17 +48,20 @@ export const metadata: Metadata = {
     google: "google-site-verification-code",
   },
   alternates: {
-    canonical: "https://patelprecision.com",
+    canonical: "/",
+    languages: {
+      "en-US": "/",
+      "en": "/",
+    },
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html lang="en">
+    <html lang="en-US">
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <meta name="language" content="English" />
         <meta name="author" content="Patel Precision Pvt Ltd" />
         <meta name="revisit-after" content="7" />
         <meta name="rating" content="general" />
