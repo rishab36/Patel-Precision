@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:seo": "next build && node scripts/generate-static-html.js",
+    "build:seo": "next build && node scripts/optimize-seo-simple.js",
     "start": "next start",
     "lint": "next lint"
   },
