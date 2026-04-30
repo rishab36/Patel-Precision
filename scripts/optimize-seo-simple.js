@@ -3,13 +3,8 @@ const path = require('path');
 
 const OUT_DIR = path.join(__dirname, '../out');
 
-/**
- * CLEAN SEO OPTIMIZATION - Proper way to add SEO
- * Uses Schema.org JSON-LD instead of attribute stuffing
- * Only adds valid attributes to proper elements
- */
-async function optimizeSeClean() {
-  console.log('Starting clean SEO optimization...');
+function optimizeSeoSimple() {
+  console.log('Starting simple SEO optimization...');
   
   // Get all HTML files from main directory
   const htmlFiles = fs.readdirSync(OUT_DIR)
@@ -41,85 +36,123 @@ async function optimizeSeClean() {
       const pageTitle = titleMatch ? titleMatch[1].split(',')[0].trim() : 'Patel Precision';
       const mainKeyword = pageTitle.replace(/\s*\|.*$/, '').trim();
       
-      // Generate multiple keyword variations for meta tags
+      // Generate multiple keyword variations like the example
       const keywordVariations = [
         mainKeyword,
         `${mainKeyword} Services`,
         `${mainKeyword} Providers`,
+        `${mainKeyword} Service Providers`,
         `${mainKeyword} in Mumbai`,
+        `${mainKeyword} in Navi Mumbai`,
+        `${mainKeyword} in Thane`,
         `${mainKeyword} in India`
       ];
       
-      // Create proper meta tags (only one set, not duplicates)
-      const metaTags = `
-    <meta name="keywords" content="${keywordVariations.join(', ')}">
-    <meta name="description" content="Patel Precision provides high-quality ${mainKeyword} services with over 25 years of expertise in precision manufacturing.">
-    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
-    <meta name="revisit-after" content="7 days">
-    <link rel="canonical" href="https://patelprecision.com/">`;
+      // Add multiple meta tags like the example
+      let metaTags = '';
+      keywordVariations.forEach(keyword => {
+        metaTags += `\n    <meta name="keywords" content="${keyword}, ${keyword} Services, ${keyword} Providers, ${keyword} Service Providers">\n    <meta name="description" content="We Offer ${keyword}, ${keyword} Services, ${keyword} Providers, ${keyword} Service Providers">`;
+      });
       
-      // Insert proper meta tags
+      // Insert multiple meta tags after existing meta tags
       html = html.replace('</head>', `${metaTags}\n</head>`);
       
-      // Add Schema.org JSON-LD structured data (proper SEO method)
-      const schemaData = {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "Patel Precision Pvt Ltd",
-        "description": `Patel Precision specializes in ${mainKeyword}`,
-        "url": "https://patelprecision.com",
-        "telephone": "+919820808852",
-        "email": "rakesh@patelprecision.com",
-        "address": {
-          "@type": "PostalAddress",
-          "streetAddress": "Plot No. - 9, Dewan Shah Udyog Nagar",
-          "addressLocality": "Mumbai",
-          "addressRegion": "Maharashtra",
-          "postalCode": "401208",
-          "addressCountry": "IN"
-        },
-        "sameAs": [
-          "https://www.facebook.com/Patel-Precision-Pvt-Ltd",
-          "https://twitter.com/PvtPatel"
-        ]
-      };
+      // Add flowing keyword content like Gemsons example
+      const keywordContent = generateKeywordContent(mainKeyword, keywordVariations);
       
-      const schemaScript = `\n    <script type="application/ld+json">\n${JSON.stringify(schemaData, null, 2)}\n    </script>`;
+      // Insert keyword content after body tag
+      html = html.replace('<body', `<body>\n${keywordContent}\n`);
       
-      // Insert schema before closing head
-      html = html.replace('</head>', `${schemaScript}\n</head>`);
+      // Add clean keyword stuffing like the example website - only to specific elements
+      html = html
+        // Add to div elements (like example)
+        .replace(/<div([^>]*)>/g, (match, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<div${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
+        })
+        // Add to section elements
+        .replace(/<section([^>]*)>/g, (match, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<section${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
+        })
+        // Add to main elements
+        .replace(/<main([^>]*)>/g, (match, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<main${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
+        })
+        // Add to h1, h2, h3 elements
+        .replace(/<h([1-6])([^>]*)>/g, (match, level, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<h${level}${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
+        })
+        // Add to p elements
+        .replace(/<p([^>]*)>/g, (match, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<p${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
+        })
+        // Add to span elements
+        .replace(/<span([^>]*)>/g, (match, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<span${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
+        })
+        // Add to a elements
+        .replace(/<a([^>]*)>/g, (match, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<a${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
+        })
+        // Add to img elements (ensure they have alt)
+        .replace(/<img([^>]*)>/g, (match, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<img${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
+        })
+        // Add to body element
+        .replace(/<body([^>]*)>/g, (match, attributes) => {
+          if (attributes.includes('alt=') || attributes.includes('title=')) return match;
+          return `<body${attributes} alt="${mainKeyword}" title="${mainKeyword}">`;
+        });
       
-      // ONLY add alt text to IMG tags (the ONLY tag that should have alt)
-      html = html.replace(/<img([^>]*)>/g, (match, attributes) => {
-        if (attributes.includes('alt=')) return match; // Already has alt
-        if (attributes.includes('alt')) return match;  // Already has alt
-        return `<img${attributes} alt="${mainKeyword}">`;
-      });
-      
-      // ONLY add alt to INPUT type=image
-      html = html.replace(/<input([^>]*type\s*=\s*['"]*image['"]*[^>]*)>/g, (match, attributes) => {
-        if (attributes.includes('alt=')) return match;
-        return `<input${attributes} alt="${mainKeyword}">`;
-      });
-      
-      // Clean up formatting - remove excessive line breaks but keep structure
-      const cleanedHtml = html
-        .replace(/\n\s*\n\s*\n/g, '\n\n') // Remove excessive blank lines
-        .trim();
+      // Format the HTML (basic pretty-print)
+      const formattedHtml = html
+        .replace(/></g, '>\n<')
+        .replace(/\n\s*\n/g, '\n');
       
       // Write back to the file
-      fs.writeFileSync(filePath, cleanedHtml);
+      fs.writeFileSync(filePath, formattedHtml);
       
-      console.log(`✓ ${file} optimized (clean method)`);
+      console.log(`\u2713 ${file} optimized`);
     } catch (error) {
-      console.error(`✗ Error optimizing ${file}:`, error.message);
+      console.error(`\u2717 Error optimizing ${file}:`, error.message);
     }
   }
   
-  console.log('Clean SEO optimization complete!');
+  console.log('SEO optimization complete!');
 }
 
-optimizeSeClean().catch(err => {
-  console.error('Error:', err);
-  process.exit(1);
-});
+// Generate flowing keyword content like Gemsons example
+function generateKeywordContent(mainKeyword, keywordVariations) {
+  const content = `
+    <!-- SEO Content Section -->
+    <div class="container seo-content-section" alt="${mainKeyword}" title="${mainKeyword}">
+      <div class="row" alt="${mainKeyword}" title="${mainKeyword}">
+        <div class="col-md-12" alt="${mainKeyword}" title="${mainKeyword}">
+          <p class="seo-description" alt="${mainKeyword}" title="${mainKeyword}">
+            <strong alt="${mainKeyword}" title="${mainKeyword}">Patel Precision Pvt Ltd is the leading ${mainKeyword} manufacturer and service provider in Mumbai, Navi Mumbai, Thane, and across India. We specialize in ${keywordVariations[0]}, ${keywordVariations[1]}, and ${keywordVariations[2]} with over 25 years of expertise in precision manufacturing.</strong>
+          </p>
+          <p class="seo-description" alt="${mainKeyword}" title="${mainKeyword}">
+            <strong alt="${mainKeyword}" title="${mainKeyword}">Our organization is counted as one of the premier ${mainKeyword} service providers, offering superior quality ${keywordVariations[3]} and ${keywordVariations[4]} to our valuable clients. We maintain the highest work standards to meet your specific needs and requirements.</strong>
+          </p>
+          <p class="seo-description" alt="${mainKeyword}" title="${mainKeyword}">
+            <strong alt="${mainKeyword}" title="${mainKeyword}">The ${mainKeyword} services offered by Patel Precision are provided by our experienced team members who are perfect in this field. Our ${keywordVariations[5]} and ${keywordVariations[6]} are being appreciated by patrons for on-time completion and better service results.</strong>
+          </p>
+          <p class="seo-description" alt="${mainKeyword}" title="${mainKeyword}">
+            <strong alt="${mainKeyword}" title="${mainKeyword}">Clients can avail our premium ${mainKeyword} services at market leading prices. We are recognized as the top ${keywordVariations[7]} and ${keywordVariations[8]} provider in Bhiwandi, Maharashtra, serving global industries with excellence.</strong>
+          </p>
+        </div>
+      </div>
+    </div>
+  `;
+  
+  return content;
+}
+
+optimizeSeoSimple();
