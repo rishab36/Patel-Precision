@@ -5,15 +5,20 @@ const __dirname = path.dirname(fileURLToPath(import.meta.url));
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   output: 'export',
-  reactStrictMode: true,
+  reactStrictMode: false,
   images: { unoptimized: true },
   eslint: { ignoreDuringBuilds: true },
   typescript: { ignoreBuildErrors: true },
   experimental: {
     missingSuspenseWithCSRBailout: false,
     optimizeCss: false,
+    optimizePackageImports: [],
+    appDir: true,
   },
   swcMinify: false,
+  compress: false,
+  poweredByHeader: false,
+  generateEtags: false,
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
