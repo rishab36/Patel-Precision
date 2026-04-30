@@ -8,7 +8,7 @@ const OUT_DIR = path.join(__dirname, '../out');
  * Uses Schema.org JSON-LD instead of attribute stuffing
  * Only adds valid attributes to proper elements
  */
-function optimizeSeClean() {
+async function optimizeSeClean() {
   console.log('Starting clean SEO optimization...');
   
   // Get all HTML files from main directory
@@ -119,4 +119,7 @@ function optimizeSeClean() {
   console.log('Clean SEO optimization complete!');
 }
 
-optimizeSeClean().catch(console.error);
+optimizeSeClean().catch(err => {
+  console.error('Error:', err);
+  process.exit(1);
+});
