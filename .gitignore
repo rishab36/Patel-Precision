@@ -1,5 +1,5 @@
 node_modules
 .next
-out
+# out folder removed to allow tracking static build artifacts
 .env*.local
 .DS_Store
