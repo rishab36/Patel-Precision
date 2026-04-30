@@ -14,11 +14,14 @@ const nextConfig = {
     optimizeCss: false,
     optimizePackageImports: [],
     appDir: true,
+    serverComponentsExternalPackages: [],
   },
   swcMinify: false,
   compress: false,
   poweredByHeader: false,
   generateEtags: false,
+  trailingSlash: true,
+  distDir: 'out',
   webpack: (config) => {
     config.resolve.alias = {
       ...(config.resolve.alias || {}),
