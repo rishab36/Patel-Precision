@@ -5,7 +5,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
-    "build:seo": "next build && node scripts/clean-corrupted-html.js && node scripts/optimize-seo-simple-fixed.js && node scripts/final-cleanup.js",
+    "build:seo": "next build && node scripts/clean-corrupted-html.js && node scripts/optimize-seo-simple-fixed.js && node scripts/advanced-seo-optimization.js && node scripts/final-cleanup.js",
     "start": "next start",
     "lint": "next lint"
   },
